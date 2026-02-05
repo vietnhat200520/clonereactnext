@@ -41,6 +41,41 @@ interface HomeProps {
   initialCourses: Course[];
   banners: SlideItem[];
 }
+export async function getStaticProps() {
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+
+  try {
+    
+    const [schoolsRes, cardsRes, bannersRes] = await Promise.all([
+      fetch(`${API_BASE_URL}/schools`),
+      fetch(`${API_BASE_URL}/cards`),
+      fetch(`${API_BASE_URL}/banners`)
+    ]);
+
+    const categories = await schoolsRes.json();
+    const initialCourses = await cardsRes.json();
+    const banners = await bannersRes.json();
+
+    return {
+      props: {
+        categories: categories || [],
+        initialCourses: initialCourses || [],
+        banners: banners ||[],
+      },
+      
+      revalidate: 60, 
+    };
+  } catch (error) {
+    console.error("Error fetching home data:", error);
+    return {
+      props: {
+        categories: [],
+        initialCourses: [],
+        banners:[],
+      },
+    };
+  }
+}
 
 export default function HomePage({ categories, initialCourses, banners }: HomeProps) {
 
@@ -61,9 +96,9 @@ export default function HomePage({ categories, initialCourses, banners }: HomePr
       <Header />
       <Box >
 
-<Banner slidesData={banners} />
+ <Banner slidesData={banners} />
 
-</Box>
+ </Box>
       <Box component="main" sx={{ flexGrow: 1, py: { xs: 2, md: 4 } }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
@@ -104,38 +139,3 @@ export default function HomePage({ categories, initialCourses, banners }: HomePr
 }
 
 
-export async function getStaticProps() {
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-
-  try {
-    // Gọi đồng thời các API để tối ưu tốc độ build
-    const [schoolsRes, cardsRes, bannersRes] = await Promise.all([
-      fetch(`${API_BASE_URL}/schools`),
-      fetch(`${API_BASE_URL}/cards`),
-      fetch(`${API_BASE_URL}/banners`)
-    ]);
-
-    const categories = await schoolsRes.json();
-    const initialCourses = await cardsRes.json();
-    const banners = await bannersRes.json();
-
-    return {
-      props: {
-        categories: categories || [],
-        initialCourses: initialCourses || [],
-        banners: banners ||[],
-      },
-      
-      revalidate: 60, 
-    };
-  } catch (error) {
-    console.error("Error fetching home data:", error);
-    return {
-      props: {
-        categories: [],
-        initialCourses: [],
-        banners:[],
-      },
-    };
-  }
-}

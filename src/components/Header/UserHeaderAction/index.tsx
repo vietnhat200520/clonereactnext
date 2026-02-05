@@ -24,17 +24,17 @@ const UserHeaderAction: React.FC<UserHeaderActionProps> = ({
 }) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const isMounted = useIsMounted();
-    const { isAuthenticated } = useAppSelector((state) => state.auth);
+    const { isAuthenticated ,user: userState} = useAppSelector((state) => state.auth);
     const open = Boolean(anchorEl);
 
     const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);
     const handleCloseMenu = () => setAnchorEl(null);
 
     
-    if (!isMounted || !isAuthenticated) return null;
+    if (!isMounted || !isAuthenticated || !user) return null;
 
     return (
-        <Box classes={{root:'user-header-action-root'}}>
+        <div className="user-header-action-root">
             <IconButton className="header-icon-btn">
                 <Badge badgeContent={cartCount} color="error" classes={{ badge: 'custom-badge' }}>
                     <ShoppingCartOutlinedIcon />
@@ -83,7 +83,7 @@ const UserHeaderAction: React.FC<UserHeaderActionProps> = ({
                     ĐĂNG XUẤT
                 </MenuItem>
             </Menu>
-        </Box>
+        </div>
     );
 };
 

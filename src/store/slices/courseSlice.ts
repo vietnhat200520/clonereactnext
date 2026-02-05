@@ -21,7 +21,7 @@ export const fetchCourseDetail = createAsyncThunk(
   'course/fetchCourseDetail',
   async (slug: string, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:5000/api/card.json');
+      const response = await fetch('http://localhost:5000/api/cards');
       if (!response.ok) {
         throw new Error('Không thể tải dữ liệu từ server');
       }

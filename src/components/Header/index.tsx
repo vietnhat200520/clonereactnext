@@ -36,7 +36,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const fetchSchools = async () => {
       try {
-        const response = await fetch('/data/school.json');
+        const response = await fetch('http://localhost:5000/api/schools');
         const data: SchoolData[] = await response.json();
         const formattedItems = data.map(item => ({ label: item.school, href: item.href }));
         setCourseItems(formattedItems);

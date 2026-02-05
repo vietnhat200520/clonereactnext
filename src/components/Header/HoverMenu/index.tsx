@@ -32,7 +32,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setAnchorEl(null);
-    }, 200);
+    }, 250); // Tăng nhẹ thời gian delay để trải nghiệm mượt hơn
   };
 
   const handleMenuClose = () => {
@@ -48,7 +48,7 @@ const HoverMenu: React.FC<HoverMenuProps> = ({
     <Box 
       className="hovermenu-wrapper"
       onMouseEnter={handleMouseEnter} 
-      onMouseLeave={handleMouseLeave} 
+      onMouseLeave={handleMouseLeave}
     >
       <Button
         classes={{ root: 'hovermenu-button' }}
@@ -68,7 +68,16 @@ const HoverMenu: React.FC<HoverMenuProps> = ({
         disableScrollLock
         disableAutoFocusItem
         className="hovermenu-root"
-        classes={{ paper: 'hovermenu-paper' }}
+        PaperProps={{
+          className: 'hovermenu-paper',
+          // Bắt sự kiện hover trên toàn bộ vùng Paper (bao gồm scrollbar)
+          onMouseEnter: () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          },
+          onMouseLeave: handleMouseLeave,
+          style: { pointerEvents: 'auto' }
+        }}
+        // Giữ nguyên các cấu hình khác
       >
         <Box className="hovermenu-list-container">
           {items.map((item, index) => (

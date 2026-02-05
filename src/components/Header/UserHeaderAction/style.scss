@@ -1,10 +1,10 @@
-.user-header-action-root.MuiButton-root {
+.user-header-action-root {
     display: flex;
     align-items: center;
     gap: 12px;
 
     .header-icon-btn {
-        color: #d32f2f !important; // Màu đỏ chủ đạo
+        color: #d32f2f !important; 
         padding: 8px !important;
 
         .custom-badge {

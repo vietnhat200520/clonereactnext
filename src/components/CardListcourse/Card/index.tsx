@@ -64,7 +64,7 @@ const Card: React.FC<CourseCardProps> = ({ course }) => {
               </Typography>
             </Box>
             
-            <Typography variant="subtitle2" className="price-tag">
+            <Typography variant="subtitle2" classes={{root: 'price-tag'}}>
               {course.price}
             </Typography>
           </Box>

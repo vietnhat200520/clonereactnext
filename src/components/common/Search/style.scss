@@ -1,66 +1,86 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 24px;
+
+  
+  @media (max-width: 580px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .search-title-group {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    white-space: nowrap;
+
+    .title-text {
+      font-weight: 700;
+      color: #1a1a1a;
+      font-size: 20px;
+    }
+
+    .count-text {
+      color: #5f6368;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+
 .search-field-root {
-    min-width: 100%;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-  
-    /* Responsive Breakpoints cho chiều rộng tối thiểu */
-    @media (min-width: 493px) {
-      min-width: 280px;
+  flex: 1;
+  max-width: 500px;
+  background-color: #fff;
+
+  @media (max-width: 580px) {
+    width: 100%;
+    max-width: 100%; 
+  }
+
+  .MuiOutlinedInput-root {
+    height: 42px;
+    border-radius: 10px;
+    padding-right: 8px;
+
+    fieldset {
+      border-color: #d7dce3;
+      transition: border-color 0.2s ease;
     }
-  
-    @media (min-width: 780px) {
-      min-width: 320px;
+
+    &:hover fieldset {
+      border-color: #c4c9d1 !important;
     }
-  
-    /* Tùy chỉnh các thành phần bên trong TextField của MUI */
-    .MuiOutlinedInput-root {
-      height: 42px;
-      border-radius: 10px;
-      padding-right: 8px;
-  
+
+    &.Mui-focused {
       fieldset {
-        border-color: #d7dce3;
-        transition: border-color 0.2s ease;
-      }
-  
-      &:hover fieldset {
-        border-color: #c4c9d1 !important;
-      }
-  
-      &.Mui-focused {
-        fieldset {
-          border-color: #9aa0a6 !important;
-          border-width: 1px !important; // Giữ border mảnh theo thiết kế
-          box-shadow: 0 0 0 2px rgba(154, 160, 166, 0.2);
-        }
-      }
-  
-      input {
-        font-size: 15px;
-        padding: 10px 12px;
-        color: #3c4043;
-  
-        &::placeholder {
-          color: #9aa0a6;
-          opacity: 1;
-        }
+        border-color: #9aa0a6 !important;
+        border-width: 1px !important;
+        box-shadow: 0 0 0 2px rgba(154, 160, 166, 0.2);
       }
     }
-  
-    .search-button {
-      .search-icon {
+
+    input {
+      font-size: 15px;
+      padding: 10px 12px;
+      color: #3c4043;
+
+      &::placeholder {
         color: #9aa0a6;
-        font-size: 20px;
-        transition: color 0.2s ease;
-      }
-  
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
-        .search-icon {
-          color: #5f6368;
-        }
+        opacity: 1;
       }
     }
   }
+
+  .search-button {
+    .search-icon {
+      color: #9aa0a6;
+      font-size: 20px;
+    }
+  }
+}
