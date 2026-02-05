@@ -52,7 +52,7 @@ const AuthRegister: React.FC<AuthRegisterProps> = ({ open, onClose, onSwitchToLo
         };
 
         try {
-            // 3. Gọi API (Đảm bảo URL khớp với route Express của bạn, ví dụ: /api/auth/register)
+
             const response = await fetch('http://localhost:5000/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -68,9 +68,10 @@ const AuthRegister: React.FC<AuthRegisterProps> = ({ open, onClose, onSwitchToLo
                     username: '', password: '', confirmPassword: '',
                     fullName: '', email: '', phone: ''
                 });
-                onSwitchToLogin(); // Chuyển sang modal đăng nhập
+                onClose();
+                onSwitchToLogin(); 
             } else {
-                // Hiển thị lỗi từ Backend (ví dụ: error.message)
+                
                 alert("Lỗi đăng ký: " + (data.error || data.message));
             }
         } catch (error) {
@@ -140,7 +141,7 @@ const AuthRegister: React.FC<AuthRegisterProps> = ({ open, onClose, onSwitchToLo
                         />
                     </Box>
 
-                    {/* Cột 2: Thông tin cá nhân */}
+                    
                     <Box className="form-column">
                         <Typography className="form-column-title">2. Thông tin cá nhân</Typography>
                         <TextField
