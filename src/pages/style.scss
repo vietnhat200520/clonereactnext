@@ -1,0 +1,64 @@
+.homepage-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f7f9;
+  
+    .banner-wrapper {
+      width: 100%;
+    }
+  
+    .main-content {
+      flex-grow: 1;
+      padding-top: 32px; 
+      padding-bottom: 32px;
+  
+      @media (max-width: 760px) {
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+    }
+  
+    .main-container {
+      display: flex !important; 
+      flex-direction: row;      
+      gap: 32px;               
+  
+    
+      @media (max-width: 760px) {
+        flex-direction: column; 
+        gap: 20px;
+      }
+    }
+  
+    .sidebar-section {
+      width: 25%; 
+      flex-shrink: 0;
+  
+     
+  
+      @media (max-width: 760px) {
+        width: 100%;
+        display: block !important; 
+        margin-bottom: 10px;
+      }
+    }
+  
+    .content-section {
+      flex-grow: 1;
+      width: 75%; 
+  
+      @media (max-width: 760px) {
+        width: 100%;
+      }
+  
+      .search-wrapper {
+        margin-bottom: 24px; // mb: 3
+      }
+    }
+  }
+  
+  
+  #nextjs-portal {
+    display: none !important;
+  }

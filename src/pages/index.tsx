@@ -1,28 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { Box, Container, Grid } from '@mui/material';
-
-
+import { Box, Container } from '@mui/material';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Banner from '../components/Banner'
+import Banner from '../components/Banner';
 import Sidebar from '../components/Sidebar';
 import CardListcourse from '../components/CardListcourse';
 import Search from '../components/common/Search';
 import ButtonChat from '../components/common/ButtonChat';
 
-interface SlideItem {
+import './style.scss';
 
-  id: number ;
-  link: string;
-  alt: string;
-}
-interface Category {
-  id: string;
-  school: string;
-  branch?: string[];
-}
-
+interface SlideItem { id: number;
+   link: string; 
+   alt: string; }
+interface Category { 
+  id: string; 
+  school: string; 
+  branch?: string[]; }
 interface Course {
   id: string | number;
   slug: string;
@@ -35,17 +30,15 @@ interface Course {
   branch: string;
   color?: string;
 }
-
 interface HomeProps {
   categories: Category[];
   initialCourses: Course[];
   banners: SlideItem[];
 }
+
 export async function getStaticProps() {
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-
   try {
-    
     const [schoolsRes, cardsRes, bannersRes] = await Promise.all([
       fetch(`${API_BASE_URL}/schools`),
       fetch(`${API_BASE_URL}/cards`),
@@ -60,25 +53,19 @@ export async function getStaticProps() {
       props: {
         categories: categories || [],
         initialCourses: initialCourses || [],
-        banners: banners ||[],
+        banners: banners || [],
       },
-      
-      revalidate: 60, 
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Error fetching home data:", error);
     return {
-      props: {
-        categories: [],
-        initialCourses: [],
-        banners:[],
-      },
+      props: { categories: [], initialCourses: [], banners: [] },
     };
   }
 }
 
 export default function HomePage({ categories, initialCourses, banners }: HomeProps) {
-
   const [filteredCourses, setFilteredCourses] = useState<Course[]>(initialCourses);
 
   const handleSearchResults = (results: Course[]) => {
@@ -86,56 +73,40 @@ export default function HomePage({ categories, initialCourses, banners }: HomePr
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f5f7f9' }}>
+    <Box className="homepage-root">
       <Head>
         <title>Trang chủ - Ôn Thi Sinh Viên</title>
         <meta name="description" content="Nền tảng ôn thi nhàn, kết quả cao dành cho sinh viên" />
       </Head>
 
-     
       <Header />
-      <Box >
 
- <Banner slidesData={banners} />
-
- </Box>
-      <Box component="main" sx={{ flexGrow: 1, py: { xs: 2, md: 4 } }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            
-            
-            <Grid item xs={12} md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
-              <Sidebar categories={categories} />
-            </Grid>
-
-           
-            <Grid item xs={12} md={9}>
-              
-             
-              <Box sx={{ mb: 3 }}>
-                <Search 
-                  courses={initialCourses} 
-                  onResults={handleSearchResults} 
-                />
-              </Box>
-
-             
-              <CardListcourse courses={filteredCourses} />
-              
-            </Grid>
-          </Grid>
-        </Container>
+      <Box className="banner-wrapper">
+        <Banner slidesData={banners} />
       </Box>
 
-      
+      <Box component="main" className="main-content">
+        <Container maxWidth="lg" className="main-container">
+          
+          <Box className="sidebar-section">
+            <Sidebar categories={categories} />
+          </Box>
+          <Box className="content-section">
+            <Box className="search-wrapper">
+              <Search 
+                courses={initialCourses} 
+                onResults={handleSearchResults} 
+              />
+            </Box>
+
+            <CardListcourse courses={filteredCourses} />
+          </Box>
+        </Container>
+      </Box>
       <ButtonChat link="https://zalo.me/your-id">
         Chat với ôn thi sinh viên
       </ButtonChat>
-
-      
       <Footer />
     </Box>
   );
 }
-
-

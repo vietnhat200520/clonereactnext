@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemText,
-  ListItemIcon,
-  Divider,
+import {Box,Button,Collapse,List,ListItemButton,ListItemText,ListItemIcon,Divider,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -15,7 +7,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import "./style.scss";
 
-// Định nghĩa Interface dữ liệu
 export interface Category {
   id: string;
   school: string;
@@ -51,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ categories }) => {
   return (
     <aside className="sidebar-container">
       <Box className="sidebar">
-        {/* NÚT DANH MỤC CHÍNH */}
+      
         <Button
           onClick={toggleMain}
           className="sidebar-button"
