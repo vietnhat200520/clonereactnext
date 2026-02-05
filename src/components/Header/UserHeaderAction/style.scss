@@ -1,0 +1,84 @@
+.user-header-action-root.MuiButton-root {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .header-icon-btn {
+        color: #d32f2f !important; // Màu đỏ chủ đạo
+        padding: 8px !important;
+
+        .custom-badge {
+            background-color: #f44336;
+            font-weight: 700;
+        }
+    }
+
+    .user-profile-trigger {
+        cursor: pointer;
+        margin-left: 8px;
+
+        .header-user-avatar {
+            width: 42px !important;
+            height: 42px !important;
+            border: 2px solid #d32f2f !important;
+            background-color: #d32f2f !important;
+        }
+    }
+}
+
+/* Menu Dropdown Styling */
+.user-dropdown-paper {
+    width: 280px;
+    border-radius: 4px !important;
+    overflow: hidden;
+    margin-top: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15) !important;
+
+    .menu-user-info-header {
+        background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+
+        .large-menu-avatar {
+            width: 56px !important;
+            height: 56px !important;
+            border: 3px solid #fff;
+        }
+
+        .text-info {
+            margin-left: 16px;
+
+            .user-name {
+                font-weight: 700;
+                color: white;
+            }
+
+            .user-email {
+                color: rgba(255, 255, 255, 0.8);
+            }
+        }
+    }
+
+    .dropdown-item {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #2c3e50 !important;
+        padding: 12px 20px !important;
+        text-transform: uppercase;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: #f8f9fa !important;
+        }
+
+        &.logout-text {
+            color: #d32f2f !important;
+        }
+    }
+
+    .menu-divider {
+        margin: 0 !important;
+        border-color: #eceff1 !important;
+    }
+}

@@ -1,0 +1,54 @@
+.banner-root {
+    width: 100%;
+    padding: 0;
+    
+    .banner-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      aspect-ratio: 3.5 / 1;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #f8f5f5;
+      background-color: #e0d0d0;
+  
+      @media (max-width: 1000px) {
+        max-width: 100%;
+        aspect-ratio: 2 / 1; // Điều chỉnh tỉ lệ cho mobile nếu cần
+      }
+  
+      .slide-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+        transition: transform 100ms ease-in-out;
+        z-index: 1;
+        visibility: hidden;
+        opacity: 1;
+  
+        &.active {
+          transform: translateX(0);
+          visibility: visible;
+          z-index: 2;
+        }
+  
+        &.top {
+          z-index: 3;
+          visibility: visible;
+        }
+  
+        &.flash {
+          animation: flash-quick 100ms linear;
+        }
+      }
+    }
+  }
+  
+  @keyframes flash-quick {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }

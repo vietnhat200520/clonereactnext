@@ -1,0 +1,50 @@
+.button-chat-root {
+    position: fixed !important;
+    bottom: 20px;
+    right: 40px;
+    z-index: 9999;
+    background-color: #dd1515 !important; // Màu đỏ đặc trưng
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    text-transform: none !important;
+    padding: 10px 24px !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+
+    &:hover {
+        background-color: #b31212 !important; // Màu đỏ đậm hơn khi hover
+        transform: scale(1.05);
+    }
+
+    
+
+    .chat-text {
+        white-space: nowrap;
+    }
+
+    // Responsive: Khi màn hình nhỏ hơn 460px
+    @media (max-width: 460px) {
+        right: 20px !important;
+        bottom: 20px !important;
+        padding: 12px !important; 
+        min-width: 0 !important;
+        width: 50px !important; // Cố định chiều rộng để tạo hình tròn
+        height: 50px !important;
+        border-radius: 50% !important;
+
+        .chat-text {
+            display: none; // Ẩn chữ trên mobile
+        }
+
+        .MuiButton-startIcon {
+            margin: 0 !important; // Căn giữa icon khi không còn chữ
+            
+            svg {
+                font-size: 24px;
+            }
+        }
+    }
+}

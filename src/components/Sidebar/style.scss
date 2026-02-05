@@ -1,0 +1,59 @@
+.sidebar-container {
+    width: 100%;
+  
+    .sidebar-button {
+      background: #d2d6da;
+      color: #111;
+      font-weight: bold;
+      padding: 8px;
+      justify-content: flex-start;
+      text-transform: none;
+      width: 100%;
+      border-radius: 4px;
+  
+      &:hover {
+        background: #ebeff3;
+      }
+    }
+  
+    .sidebar-list {
+      background: #f1f1f1;
+      border: 1px solid #ddd;
+      padding: 0;
+    }
+  
+    .submenu {
+      padding-left: 12px;
+      background: #fafafa;
+    }
+  
+    /* Trạng thái Active */
+    .list-item-active {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+    }
+  
+    /* Icon xoay */
+    .arrow-icon {
+      min-width: 30px;
+      display: flex;
+      justify-content: center;
+  
+      svg {
+        transition: transform 0.3s ease;
+      }
+  
+      &.open svg {
+        transform: rotate(180deg);
+      }
+    }
+  
+    /* Typography */
+    .item-text-primary {
+      font-weight: bold !important;
+      font-size: 14px !important;
+    }
+  
+    .sub-item-text-primary {
+      font-size: 14px !important;
+    }
+  }

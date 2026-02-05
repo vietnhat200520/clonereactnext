@@ -1,0 +1,61 @@
+.hovermenu-wrapper {
+    display: inline-block;
+    position: relative;
+  
+    .hovermenu-button {
+      color: #333;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 15px;
+      padding: 8px 16px;
+      background-color: transparent;
+      transition: color 0.2s ease-in-out;
+  
+      &:hover {
+        color: #d32f2f;
+        background-color: transparent;
+      }
+    }
+  }
+  
+  /* Giao diện Menu đổ xuống */
+  .hovermenu-paper {
+    max-width: 300px;
+    max-height: 330px;
+    margin-top: 8px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 4px;
+    overflow-y: auto;
+    pointer-events: auto;
+  
+    /* Tùy chỉnh thanh cuộn (Scrollbar) cho Paper */
+    &::-webkit-scrollbar {
+      width: 14px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #cccccc;
+      border-radius: 10px;
+      border: 3px solid #f1f1f1;
+      &:hover {
+        background-color: #b3b3b3;
+      }
+    }
+    &::-webkit-scrollbar-button:single-button {
+      background-color: #f1f1f1;
+      display: block;
+      height: 16px;
+      background-size: 8px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    &::-webkit-scrollbar-button:vertical:decrement {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,20 10,80 90,80' fill='%23999'/></svg>");
+    }
+    &::-webkit-scrollbar-button:vertical:increment {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='10,20 90,20 50,80' fill='%23999'/></svg>");
+    }
+  
+}

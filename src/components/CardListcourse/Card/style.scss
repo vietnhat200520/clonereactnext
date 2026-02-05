@@ -1,0 +1,103 @@
+.course-card-root {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f0f0;
+    text-decoration: none; // Đảm bảo Link không bị gạch chân
+    color: inherit;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  
+    .card-image-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+  
+      .course-img-element {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      .placeholder-image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        .placeholder-text {
+          color: white;
+          font-weight: 700;
+        }
+      }
+    }
+  
+    .card-info {
+      padding: 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+  
+      .card-title {
+        font-weight: 700 !important;
+        color: #1a1a1a;
+        margin-bottom: 8px !important;
+        line-height: 1.4 !important;
+        
+        
+        display: -webkit-box;
+       
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+  
+      .card-description {
+        color: #666;
+        font-size: 13px !important;
+        margin-bottom: 16px !important;
+        flex-grow: 1;
+        
+       
+        display: -webkit-box;
+       
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+  
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #f5f5f5;
+        padding-top: 12px;
+  
+        .rating-section {
+          display: flex;
+          align-items: center;
+  
+          .rating-count {
+            color: #757575; // textSecondary
+          }
+        }
+  
+        .price-tag {
+          border-radius: 30px !important;
+          color: #fffefe;
+          background: #e80527;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-weight: 700 !important;
+        }
+      }
+    }
+  }
